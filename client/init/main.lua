@@ -202,6 +202,16 @@ CreateThread(function()
 			externalPort = GetConvarInt('voice_externalPort', 0)
 			MumbleSetServerAddress(GetConvar('voice_externalAddress', ''), GetConvarInt('voice_externalPort', 0))
 		end
+		
+		if IsHudPreferenceSwitchedOn() and not IsHudHidden() then
+			sendUIMessage({
+				uiEnabled = GetConvarInt("voice_enableUi", 1) == 1
+			})
+		else
+			sendUIMessage({
+				uiEnabled = false
+			})
+		end
 	end
 end)
 
